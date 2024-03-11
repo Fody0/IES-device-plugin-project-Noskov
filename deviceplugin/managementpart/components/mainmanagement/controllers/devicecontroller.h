@@ -28,6 +28,9 @@ class DeviceController: public QObject {
 
  private slots:
 
+    void innerStartPeriodModelChangedSlot(quint64 period);
+ void innerStartWidthModelChangedSlot(quint64 width);
+
   void channelNameChangedViewSlot(int channel_num, const QString &value);
   void channelEnabledStatusChangedViewSlot(int channel_num, bool value);
 

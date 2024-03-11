@@ -28,6 +28,20 @@ class DeviceEntityNotConnectedStateStandaloneImpl1: public DeviceEntityState {
   ErrorCode loadDeviceDTO(const std::shared_ptr<DeviceEntityDTO> &dto) override;
   std::shared_ptr<DeviceEntityDTO> updateDeviceDTO() override;
 
+    GetInnerStartPeriodResponse getInnerStartPeriod(GetInnerStartPeriodRequest request) override;
+
+    GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
+
 };
+
+GetInnerStartPeriodResponse
+DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
+    return GetInnerStartPeriodResponse();
+}
+
+GetInnerStartWidthResponse
+DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartWidth(GetInnerStartWidthRequest request) {
+    return GetInnerStartWidthResponse();
+}
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYNOTCONNECTEDSTATESTANDALONEIMPL2_H_

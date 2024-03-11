@@ -33,10 +33,36 @@ class DeviceEntityConnectedStateStandaloneImpl1: public DeviceEntityState {
   ErrorCode loadDeviceDTO(const std::shared_ptr<DeviceEntityDTO> &dto) override;
   std::shared_ptr<DeviceEntityDTO> updateDeviceDTO() override;
 
- private:
+    GetInnerStartPeriodResponse getInnerStartPeriod(GetInnerStartPeriodRequest request) override;
+
+    GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
+
+private:
   std::shared_ptr<DeviceEntityRegCard> _reg_card = nullptr;
   std::shared_ptr<DeviceEntityRegCard> _postponed_reg_card = nullptr;
   std::shared_ptr<DeviceEntity> _device_entity = nullptr;
 };
+
+GetInnerStartPeriodResponse
+DeviceEntityConnectedStateStandaloneImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
+    GetInnerStartPeriodResponse response;
+
+    if(_reg_card!= nullptr){
+        response=_reg_card->getInnerStartPeriod(request);
+    }
+
+    return response;
+}
+
+GetInnerStartWidthResponse
+DeviceEntityConnectedStateStandaloneImpl1::getInnerStartWidth(GetInnerStartWidthRequest request) {
+    GetInnerStartWidthResponse response;
+
+    if(_reg_card!= nullptr){
+        response=_reg_card->getInnerStartWidth(request);
+    }
+
+    return response;
+}
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYCONNECTEDSTATESTANDALONEIMPL1_H_

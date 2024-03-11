@@ -57,7 +57,11 @@ class DeviceEntityImpl: public DeviceEntity {
 
   std::shared_ptr<DeviceEntityDTO> getDeviceDTO() override;
 
- private:
+    GetInnerStartPeriodResponse getInnerStartPeriod(GetInnerStartPeriodRequest request) override;
+
+    GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
+
+private:
   std::shared_ptr<DeviceEntityDTO> _dto = nullptr;
 
   std::map<DeviceState, std::shared_ptr<DeviceEntityState>> _states;
@@ -65,5 +69,7 @@ class DeviceEntityImpl: public DeviceEntity {
   DeviceState _current_state_key = NOT_CONNECTED;
   std::shared_ptr<DeviceEntityRegCard> _reg_card = nullptr;
 };
+
+
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYIMPL_H_

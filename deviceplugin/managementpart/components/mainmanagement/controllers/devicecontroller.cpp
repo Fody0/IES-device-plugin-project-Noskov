@@ -15,7 +15,22 @@ DeviceController::DeviceController(const std::shared_ptr<DeviceView> &test_devic
 }
 
 void DeviceController::setConnections() {
+
+
+
   if (_device_cb_factory != nullptr) {
+      auto inner_start_width_callback=_device_cb_factory->getInnerStartWidthCallback();
+      if(inner_start_width_callback!= nullptr){
+          QObject::connect(inner_start_width_callback.get(),&ULong64ValueCallback::statusChanged,
+                           this,&DeviceController::innerStartWidthModelChangedSlot);
+      }
+
+      auto  inner_start_period_callback=_device_cb_factory->getInnerStartPeriodCallback();
+      if(inner_start_period_callback!=nullptr){
+          QObject::connect(inner_start_period_callback.get(),&ULong64ValueCallback::statusChanged,
+                           this,&DeviceController::innerStartPeriodModelChangedSlot);
+      }
+
     auto sync_des_lock_callback = _device_cb_factory->getSyncDesLockCallback();
     if (sync_des_lock_callback != nullptr) {
       QObject::connect(sync_des_lock_callback.get(), &BoolValueCallback::statusChanged,
@@ -136,6 +151,23 @@ void DeviceController::setConnections() {
 //                     this, &DeviceController::cpsStatusViewChanged);
 //  }
 }
+
+
+void DeviceController::innerStartWidthModelChangedSlot(quint64 width) {
+    if (_device_view != nullptr) {
+        _device_view->setInnerStartWidth(width);
+    }
+}
+
+
+void DeviceController::innerStartPeriodModelChangedSlot(quint64 value) {
+    if (_device_view != nullptr) {
+        _device_view->setInnerStartPeriod(value);
+    }
+}
+
+
+
 
 void DeviceController::channelNameChangedViewSlot(int channel_num, const QString &value) {
   if (_use_case_factory != nullptr) {

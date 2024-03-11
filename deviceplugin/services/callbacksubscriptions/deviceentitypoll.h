@@ -31,7 +31,11 @@ class DeviceEntityPoll: public IDeviceEntityPoll {
   void channelEnabledStatusesPoll() override;
   void channelInvertedStatusesPoll() override;
 
- private:
+    void innerStartPeriodPoll() override;
+
+    void innerStartWidthPoll() override;
+
+private:
   std::shared_ptr<DeviceEntity> _device_entity = nullptr;
   std::shared_ptr<DeviceCallbackSubscriptionFactory> _callback_sub_factory = nullptr;
 

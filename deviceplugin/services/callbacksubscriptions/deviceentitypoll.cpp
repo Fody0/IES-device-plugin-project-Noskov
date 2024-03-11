@@ -39,6 +39,8 @@ void DeviceEntityPoll::process() {
   channelInvertedStatusesPoll();
   channelStartModesPoll();
   channelStartSourcesPoll();
+  innerStartPeriodPoll();
+  innerStartWidthPoll();
 }
 
 void DeviceEntityPoll::SyncModuleStatusesPoll() {
@@ -252,4 +254,40 @@ void DeviceEntityPoll::channelNamesPoll() {
     callback->pushEvent(values);
     qDebug() << "CALLBACK CHANNEL DELAY PUSHED " << __func__;
   }
+}
+
+void DeviceEntityPoll::innerStartPeriodPoll() {
+    if(_device_entity!=nullptr){
+        GetInnerStartPeriodRequest request{};
+        auto response=_device_entity->getInnerStartPeriod(request);
+        if(response.error_code!=SUCCESS){
+
+            return;
+        }
+        if(_callback_sub_factory!= nullptr){
+            auto callback=_callback_sub_factory->getInnerStartPeriodCallback();
+            if(callback!= nullptr){
+                callback->pushEvent(response.result);
+            }
+        }
+    }
+    //qDebug ()<<"\n\n\nINNER START PERIOD POLL\n\n\n";
+}
+
+void DeviceEntityPoll::innerStartWidthPoll() {
+    if(_device_entity!= nullptr){
+        GetInnerStartWidthRequest request{};
+        auto response=_device_entity->getInnerStartWidth(request);
+
+        if(response.error_code!=SUCCESS){
+
+        }
+
+        if(_callback_sub_factory!= nullptr){
+            auto callback=_callback_sub_factory->getChannelWidthsCallback();
+            if(callback!= nullptr){
+                callback->pushEvent(response.result);
+            }
+        }
+    }
 }
