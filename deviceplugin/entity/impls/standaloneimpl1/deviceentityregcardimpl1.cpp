@@ -563,6 +563,7 @@ GetInnerStartWidthResponse DeviceEntityRegCardImpl1::getInnerStartWidth(GetInner
         std::vector<uint16_t> reg_values(2);
         auto error_code=_modbus_wrapper->readHoldingRegisters(4,2,reg_values);
 
+
         if(error_code==SUCCESS){
             uint32_t value_in_disc=0;
             modbus::fromMsbLsb(reg_values[0],reg_values[1],value_in_disc);
@@ -572,5 +573,40 @@ GetInnerStartWidthResponse DeviceEntityRegCardImpl1::getInnerStartWidth(GetInner
         }
         response.error_code=error_code;
     }
+    return response;
+}
+
+GetInnerStartEnabledStatusResponse
+DeviceEntityRegCardImpl1::getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request) {
+    GetInnerStartEnabledStatusResponse response;
+
+    if(_modbus_wrapper!=nullptr){
+        uint16_t reg_values;
+        auto error_code=_modbus_wrapper->readHoldingRegister(6,reg_values);
+        bool enabled=false;
+        if(error_code==SUCCESS){
+            enabled=modbus::readByteValue(0,1,reg_values);
+        }
+        response.result=enabled;
+        response.error_code=error_code;
+    }
+
+    return response;
+}
+
+GetInnerStartInvertedStatusResponse
+DeviceEntityRegCardImpl1::getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request) {
+    GetInnerStartInvertedStatusResponse response;
+    if(_modbus_wrapper!=nullptr){
+        uint16_t reg_values;
+        auto error_code=_modbus_wrapper->readHoldingRegister(6,reg_values);
+        bool inverted=false;
+        if(error_code==SUCCESS){
+            inverted=modbus::readByteValue(1,1,reg_values);
+        }
+        response.result=inverted;
+        response.error_code=error_code;
+    }
+
     return response;
 }

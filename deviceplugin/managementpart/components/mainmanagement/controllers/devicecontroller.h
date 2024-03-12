@@ -30,6 +30,8 @@ class DeviceController: public QObject {
 
     void innerStartPeriodModelChangedSlot(quint64 period);
  void innerStartWidthModelChangedSlot(quint64 width);
+ void innerStartEnabledStatusModelChangedSlot(bool enabled);
+    void innerStartInvertedStatusModelChangedSlot(bool inverted);
 
   void channelNameChangedViewSlot(int channel_num, const QString &value);
   void channelEnabledStatusChangedViewSlot(int channel_num, bool value);

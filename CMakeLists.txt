@@ -97,11 +97,12 @@ file(GLOB TEST_DEVICE_SRC
         "${CMAKE_SOURCE_DIR}/deviceplugin/widgets/epss/*.cpp"
         "${CMAKE_SOURCE_DIR}/deviceplugin/widgets/epss/basic/*.cpp"
         "${CMAKE_SOURCE_DIR}/deviceplugin/widgets/epss/composed/*.cpp"
+#        "${CMAKE_SOURCE_DIR}/deviceplugin/managementpart/usecase/innerstart/*.cpp"
 
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
         )
 
-add_library(${PLUGIN_NAME} SHARED ${TEST_DEVICE_SRC} deviceplugin/managementpart/usecase/innerstart/getInnerStartPeriodUseCase.h deviceplugin/managementpart/usecase/innerstart/getInnerStartPeriodUseCase.h deviceplugin/managementpart/usecase/innerstart/getInnerStartWidthUseCase.h)
+add_library(${PLUGIN_NAME} SHARED ${TEST_DEVICE_SRC} )
 target_link_libraries(${PLUGIN_NAME}
         Qt5::Widgets
         utils::utils
@@ -118,7 +119,7 @@ target_compile_options(${PLUGIN_NAME} PRIVATE ${COMPILE_OPTIONS})
 file(GLOB TEST_EXEC_SRC
         "${CMAKE_SOURCE_DIR}/test/*.cpp"
         )
-add_executable(${PROJECT_NAME} ${SRC} ${TEST_EXEC_SRC} main.cpp deviceplugin/managementpart/usecase/innerstart/getInnerStartPeriodUseCase.h deviceplugin/managementpart/usecase/innerstart/getInnerStartWidthUseCase.h)
+add_executable(${PROJECT_NAME} ${SRC} ${TEST_EXEC_SRC} main.cpp)
 
 
 target_link_libraries(${PROJECT_NAME} ${PLUGIN_NAME})

@@ -16,7 +16,21 @@ DeviceController::DeviceController(const std::shared_ptr<DeviceView> &test_devic
 
 void DeviceController::setConnections() {
 
+    if (_device_cb_factory != nullptr) {
+        auto inner_start_inverted_status_callback = _device_cb_factory->getInnerStartInvertedStatusCallback();
+        if (inner_start_inverted_status_callback != nullptr) {
+            QObject::connect(inner_start_inverted_status_callback.get(), &ULong64ValueCallback::statusChanged,
+                             this, &DeviceController::innerStartInvertedStatusModelChangedSlot);
+        }
+    }
 
+    if (_device_cb_factory != nullptr) {
+        auto inner_start_enabled_status_callback = _device_cb_factory->getInnerStartEnabledStatusCallback();
+        if (inner_start_enabled_status_callback != nullptr) {
+            QObject::connect(inner_start_enabled_status_callback.get(), &ULong64ValueCallback::statusChanged,
+                             this, &DeviceController::innerStartEnabledStatusModelChangedSlot);
+        }
+    }
 
   if (_device_cb_factory != nullptr) {
       auto inner_start_width_callback=_device_cb_factory->getInnerStartWidthCallback();
@@ -152,6 +166,17 @@ void DeviceController::setConnections() {
 //  }
 }
 
+void DeviceController::innerStartInvertedStatusModelChangedSlot(bool inverted) {
+    if(_device_view!= nullptr){
+        _device_view->setInnerStartInvertedStatus(inverted);
+    }
+}
+
+void DeviceController::innerStartEnabledStatusModelChangedSlot(bool enabled) {
+    if(_device_view!= nullptr){
+        _device_view->setInnerStartEnabledStatus(enabled);
+    }
+}
 
 void DeviceController::innerStartWidthModelChangedSlot(quint64 width) {
     if (_device_view != nullptr) {

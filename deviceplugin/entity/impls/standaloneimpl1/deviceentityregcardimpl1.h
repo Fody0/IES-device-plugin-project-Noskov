@@ -50,6 +50,12 @@ class DeviceEntityRegCardImpl1: public DeviceEntityRegCard {
 
     GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
 
+    GetInnerStartEnabledStatusResponse
+    getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request) override;
+
+    GetInnerStartInvertedStatusResponse
+    getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request) override;
+
 private:
   /**
    * Основной модбас враппер

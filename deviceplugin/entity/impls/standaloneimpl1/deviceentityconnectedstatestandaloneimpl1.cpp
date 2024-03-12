@@ -244,3 +244,25 @@ std::shared_ptr<DeviceEntityDTO> DeviceEntityConnectedStateStandaloneImpl1::upda
   // TODO: Дописать процесс формирования DTO
   return DeviceEntityState::updateDeviceDTO();
 }
+
+GetInnerStartEnabledStatusResponse
+DeviceEntityConnectedStateStandaloneImpl1::getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request) {
+    GetInnerStartEnabledStatusResponse response;
+
+    if(_reg_card!= nullptr){
+        response=_reg_card->getInnerStartEnabledStatus (request);
+    }
+
+    return response;
+}
+
+GetInnerStartInvertedStatusResponse
+DeviceEntityConnectedStateStandaloneImpl1::getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request) {
+    GetInnerStartInvertedStatusResponse response;
+
+    if(_reg_card!= nullptr){
+        response=_reg_card->getInnerStartInvertedStatus(request);
+    }
+
+    return response;
+}

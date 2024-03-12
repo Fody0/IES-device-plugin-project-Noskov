@@ -231,3 +231,24 @@ std::shared_ptr<GetInnerStartWidthUseCase> UseCaseFactory::createGetInnerStartWi
 
     return _get_inner_start_width_use_case;
 }
+
+std::shared_ptr<getInnerStartEnabledStatusUseCase> UseCaseFactory::createGetInnerStartEnabledStatusUseCase() {
+    std::shared_ptr<getInnerStartEnabledStatusUseCase> result= nullptr;
+
+    if(_get_inner_start_enabled_status_use_case == nullptr){
+        _get_inner_start_enabled_status_use_case=std::make_shared<getInnerStartEnabledStatusUseCase>(_device_entity);
+    }
+
+    return  _get_inner_start_enabled_status_use_case;
+}
+
+std::shared_ptr<getInnerStartInvertedStatusUseCase> UseCaseFactory::createGetInnerStartInvertedStatusUseCase() {
+    std::shared_ptr<getInnerStartInvertedStatusUseCase> result= nullptr;
+
+    if(_get_inner_start_inverted_status_use_case == nullptr){
+        _get_inner_start_inverted_status_use_case=std::make_shared<getInnerStartInvertedStatusUseCase>(_device_entity);
+    }
+
+    return  _get_inner_start_inverted_status_use_case;
+}
+

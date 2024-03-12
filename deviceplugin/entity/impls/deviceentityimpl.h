@@ -61,6 +61,12 @@ class DeviceEntityImpl: public DeviceEntity {
 
     GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
 
+    GetInnerStartEnabledStatusResponse
+    getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request) override;
+
+    GetInnerStartInvertedStatusResponse
+    getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request) override;
+
 private:
   std::shared_ptr<DeviceEntityDTO> _dto = nullptr;
 

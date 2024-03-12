@@ -37,6 +37,11 @@ class DeviceEntityConnectedStateStandaloneImpl1: public DeviceEntityState {
 
     GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request) override;
 
+    GetInnerStartEnabledStatusResponse getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request) override;
+
+    GetInnerStartInvertedStatusResponse
+    getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request) override;
+
 private:
   std::shared_ptr<DeviceEntityRegCard> _reg_card = nullptr;
   std::shared_ptr<DeviceEntityRegCard> _postponed_reg_card = nullptr;
@@ -64,5 +69,6 @@ DeviceEntityConnectedStateStandaloneImpl1::getInnerStartWidth(GetInnerStartWidth
 
     return response;
 }
+
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYCONNECTEDSTATESTANDALONEIMPL1_H_

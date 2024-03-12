@@ -41,6 +41,8 @@ void DeviceEntityPoll::process() {
   channelStartSourcesPoll();
   innerStartPeriodPoll();
   innerStartWidthPoll();
+  innerStartEnabledStatusPoll();
+  innerStartInvertedStatusPoll();
 }
 
 void DeviceEntityPoll::SyncModuleStatusesPoll() {
@@ -285,6 +287,40 @@ void DeviceEntityPoll::innerStartWidthPoll() {
 
         if(_callback_sub_factory!= nullptr){
             auto callback=_callback_sub_factory->getInnerStartWidthCallback();
+            if(callback!= nullptr){
+                callback->pushEvent(response.result);
+            }
+        }
+    }
+}
+
+void DeviceEntityPoll::innerStartEnabledStatusPoll() {
+    if(_device_entity!=nullptr){
+        GetInnerStartEnabledStatusRequest request{};
+        auto response=_device_entity->getInnerStartEnabledStatus(request);
+        if(response.error_code!=SUCCESS){
+
+            return;
+        }
+        if(_callback_sub_factory!= nullptr){
+            auto callback=_callback_sub_factory->getInnerStartEnabledStatusCallback();
+            if(callback!= nullptr){
+                callback->pushEvent(response.result);
+            }
+        }
+    }
+}
+
+void DeviceEntityPoll::innerStartInvertedStatusPoll() {
+    if(_device_entity!=nullptr){
+        GetInnerStartInvertedStatusRequest request{};
+        auto response=_device_entity->getInnerStartInvertedStatus(request);
+        if(response.error_code!=SUCCESS){
+
+            return;
+        }
+        if(_callback_sub_factory!= nullptr){
+            auto callback=_callback_sub_factory->getInnerStartInvertedStatusCallback();
             if(callback!= nullptr){
                 callback->pushEvent(response.result);
             }

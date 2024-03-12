@@ -36,6 +36,9 @@ class DeviceEntityState {
   virtual GetInnerStartPeriodResponse getInnerStartPeriod(GetInnerStartPeriodRequest request)=0;
   virtual GetInnerStartWidthResponse getInnerStartWidth(GetInnerStartWidthRequest request)=0;
 
+  virtual GetInnerStartEnabledStatusResponse getInnerStartEnabledStatus(GetInnerStartEnabledStatusRequest request)=0;
+  virtual GetInnerStartInvertedStatusResponse getInnerStartInvertedStatus(GetInnerStartInvertedStatusRequest request)=0;
+
   virtual int getChannelCount() = 0;
 
   /**
