@@ -284,7 +284,7 @@ void DeviceEntityPoll::innerStartWidthPoll() {
         }
 
         if(_callback_sub_factory!= nullptr){
-            auto callback=_callback_sub_factory->getChannelWidthsCallback();
+            auto callback=_callback_sub_factory->getInnerStartWidthCallback();
             if(callback!= nullptr){
                 callback->pushEvent(response.result);
             }

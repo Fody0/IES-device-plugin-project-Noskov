@@ -5,9 +5,9 @@
 #include "getInnerStartWidthUseCase.h"
 
 
-GetInnerStartWidthUseCase::GetInnerStartWidthUseCase(const std::shared_ptr<DeviceEntity> &deviceEntity) {
+GetInnerStartWidthUseCase::GetInnerStartWidthUseCase(const std::shared_ptr<DeviceEntity> &deviceEntity):
     _device_entity(deviceEntity){
-}
+
 }
 
 GetInnerStartWidthUseCaseResponse GetInnerStartWidthUseCase::execute(GetInnerStartWidthUseCaseRequest request) {

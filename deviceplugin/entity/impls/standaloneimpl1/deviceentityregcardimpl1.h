@@ -66,23 +66,10 @@ private:
   std::shared_ptr<DiscreteValueConverter<uint64_t>> _channel_delay_converter = nullptr;
   std::shared_ptr<DiscreteValueConverter<uint64_t>> _channel_width_converter = nullptr;
 };
-
-GetInnerStartPeriodResponse DeviceEntityRegCardImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
-
-    GetInnerStartPeriodResponse response;
-
-    if(_modbus_wrapper!= nullptr){
-        std::vector<uint16_t> reg_values(2);
-        auto error_code=_modbus_wrapper->readHoldingRegisters(2,2,reg_values);
-        if(error_code == SUCCESS){
-            uint32_t value_in_disc=0;
-            modbus::fromMsbLsb(reg_values[0],reg_values[1],value_in_disc);
-            uint64_t period=(std::uint64_t ) value_in_disc*25+100;
-            response.error_code=error_code;
-        }
-    }
-
-    return GetInnerStartPeriodResponse();
-}
+//
+//GetInnerStartPeriodResponse DeviceEntityRegCardImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
+//
+//
+//}
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYREGCARDIMPL1_H_

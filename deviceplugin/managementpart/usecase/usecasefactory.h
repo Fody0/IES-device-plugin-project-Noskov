@@ -55,7 +55,7 @@ class UseCaseFactory: public QObject {
   std::shared_ptr<SetChannelStartModeUseCase> createSetChannelStartModeUseCase();
 
     std::shared_ptr<GetInnerStartPeriodUseCase> createGetInnerStartPeriodUseCase();
-    std::shared_ptr<GetInnerStartPeriodUseCase> createGetInnerStartWidthUseCase();
+    std::shared_ptr<GetInnerStartWidthUseCase> createGetInnerStartWidthUseCase();
 
   // TODO: Дописать методы создания и получения юзкейсов
 
