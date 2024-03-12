@@ -15,7 +15,7 @@ GetInnerStartEnabledStatusUseCaseResponse getInnerStartEnabledStatusUseCase::exe
     GetInnerStartEnabledStatusUseCaseResponse response{};
 
     if (_device_entity != nullptr) {
-        GetInnerStartEnabledStatusUseCaseRequest entity_request;
+        GetInnerStartEnabledStatusRequest entity_request;
         auto entity_response = _device_entity->getInnerStartEnabledStatus(entity_request);
 
         response.error_code = entity_response.error_code;

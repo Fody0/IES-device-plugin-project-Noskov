@@ -39,24 +39,5 @@ class DeviceEntityNotConnectedStateStandaloneImpl1: public DeviceEntityState {
 
 };
 
-GetInnerStartPeriodResponse
-DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
-    return GetInnerStartPeriodResponse();
-}
-
-GetInnerStartWidthResponse
-DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartWidth(GetInnerStartWidthRequest request) {
-    return GetInnerStartWidthResponse();
-}
-
-GetInnerStartEnabledStatusResponse DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartEnabledStatus(
-        GetInnerStartEnabledStatusRequest request) {
-    return GetInnerStartEnabledStatusResponse();
-}
-
-GetInnerStartInvertedStatusResponse DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartInvertedStatus(
-        GetInnerStartInvertedStatusRequest request) {
-    return GetInnerStartInvertedStatusResponse();
-}
 
 #endif //CPSDEVICESTANDALONEPLUGIN_DEVICEPLUGIN_ENTITY_IMPLS_STANDALONEIMPL1_DEVICEENTITYNOTCONNECTEDSTATESTANDALONEIMPL2_H_

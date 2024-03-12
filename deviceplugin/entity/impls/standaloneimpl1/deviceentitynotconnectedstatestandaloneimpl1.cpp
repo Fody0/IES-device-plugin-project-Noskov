@@ -73,3 +73,23 @@ std::shared_ptr<DeviceEntityDTO> DeviceEntityNotConnectedStateStandaloneImpl1::u
   return DeviceEntityState::updateDeviceDTO();
 }
 
+GetInnerStartPeriodResponse
+DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartPeriod(GetInnerStartPeriodRequest request) {
+    return GetInnerStartPeriodResponse();
+}
+
+GetInnerStartWidthResponse
+DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartWidth(GetInnerStartWidthRequest request) {
+    return GetInnerStartWidthResponse();
+}
+
+GetInnerStartEnabledStatusResponse DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartEnabledStatus(
+        GetInnerStartEnabledStatusRequest request) {
+    return GetInnerStartEnabledStatusResponse();
+}
+
+GetInnerStartInvertedStatusResponse DeviceEntityNotConnectedStateStandaloneImpl1::getInnerStartInvertedStatus(
+        GetInnerStartInvertedStatusRequest request) {
+    return GetInnerStartInvertedStatusResponse();
+}
+

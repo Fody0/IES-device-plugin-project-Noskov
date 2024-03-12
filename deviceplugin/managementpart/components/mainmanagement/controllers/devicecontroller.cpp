@@ -19,7 +19,7 @@ void DeviceController::setConnections() {
     if (_device_cb_factory != nullptr) {
         auto inner_start_inverted_status_callback = _device_cb_factory->getInnerStartInvertedStatusCallback();
         if (inner_start_inverted_status_callback != nullptr) {
-            QObject::connect(inner_start_inverted_status_callback.get(), &ULong64ValueCallback::statusChanged,
+            QObject::connect(inner_start_inverted_status_callback.get(), &BoolValueCallback::statusChanged,
                              this, &DeviceController::innerStartInvertedStatusModelChangedSlot);
         }
     }
@@ -27,7 +27,7 @@ void DeviceController::setConnections() {
     if (_device_cb_factory != nullptr) {
         auto inner_start_enabled_status_callback = _device_cb_factory->getInnerStartEnabledStatusCallback();
         if (inner_start_enabled_status_callback != nullptr) {
-            QObject::connect(inner_start_enabled_status_callback.get(), &ULong64ValueCallback::statusChanged,
+            QObject::connect(inner_start_enabled_status_callback.get(), &BoolValueCallback::statusChanged,
                              this, &DeviceController::innerStartEnabledStatusModelChangedSlot);
         }
     }

@@ -15,7 +15,7 @@ GetInnerStartInvertedStatusUseCaseResponse getInnerStartInvertedStatusUseCase::e
     GetInnerStartInvertedStatusUseCaseResponse response{};
 
     if (_device_entity != nullptr) {
-        GetInnerStartInvertedStatusUseCaseRequest entity_request;
+        GetInnerStartInvertedStatusRequest entity_request;
         auto entity_response = _device_entity->getInnerStartInvertedStatus(entity_request);
 
         response.error_code = entity_response.error_code;
